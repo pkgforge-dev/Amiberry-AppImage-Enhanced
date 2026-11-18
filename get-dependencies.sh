@@ -26,7 +26,7 @@ echo "Building stable version of Amiberry..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/BlitterStudio/amiberry"
 VERSION="$(curl -s https://api.github.com/repos/BlitterStudio/amiberry/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)"
-git clone --recursive --depth 1 "$REPO" ./amiberry
+git clone --recursive --depth 1 --branch "$VERSION" "$REPO" ./amiberry
 VERSIONNV="${VERSION#v}"
 echo "$VERSIONNV" > ~/version
 
@@ -42,7 +42,6 @@ tar -xJf qemu-uae.tar.xz -C ./AppDir/bin
 rm -f qemu-uae.tar.xz
 
 cd ./amiberry
-git checkout "$VERSION"
 cmake ./ -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j$(nproc)
 mv -v build/amiberry roms whdboot build/external/capsimage/libcapsimage.so build/external/floppybridge/libfloppybridge.so  ../AppDir/bin

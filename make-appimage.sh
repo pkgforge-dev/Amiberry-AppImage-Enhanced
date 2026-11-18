@@ -12,7 +12,6 @@ export DESKTOP=https://raw.githubusercontent.com/BlitterStudio/amiberry/refs/hea
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
-ln -sr ./AppDir/bin/libcapsimage.so ./AppDir/bin/capsimg.so
 quick-sharun ./AppDir/bin/*
 
 # Turn AppDir into AppImage
